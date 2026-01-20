@@ -2,8 +2,6 @@
     use Illuminate\Support\Str;
 @endphp
 
-
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -238,6 +236,123 @@
             margin-right: auto;
         }
 
+        /* TOP MENU SECTION */
+        .top-menu-section {
+            margin-bottom: 32px;
+        }
+        .top-menu-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 14px;
+        }
+        .top-menu-title {
+            font-size: 17px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .top-menu-badge {
+            font-size: 20px;
+        }
+        .top-menu-period {
+            font-size: 11px;
+            color: var(--text-muted);
+            background-color: var(--green-soft2);
+            padding: 4px 10px;
+            border-radius: 999px;
+            border: 1px solid #bbf7d0;
+        }
+        .top-menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 14px;
+        }
+        .top-menu-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f0fdf4 100%);
+            border-radius: 16px;
+            border: 2px solid #86efac;
+            padding: 12px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 8px 20px rgba(22, 163, 74, 0.15);
+            transition: transform 0.16s ease, box-shadow 0.16s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .top-menu-card::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 100px;
+            height: 200%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transform: rotate(25deg);
+        }
+        .top-menu-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(22, 163, 74, 0.25);
+        }
+        .top-menu-rank {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--green) 0%, var(--green-dark) 100%);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 14px;
+            flex-shrink: 0;
+            box-shadow: 0 4px 12px rgba(22, 163, 74, 0.4);
+        }
+        .top-menu-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            object-fit: cover;
+            background-color: #e5f9ec;
+            flex-shrink: 0;
+        }
+        .top-menu-img-empty {
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            background-color: #e5f9ec;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+        .top-menu-info {
+            flex: 1;
+            min-width: 0;
+        }
+        .top-menu-name {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-main);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .top-menu-stats {
+            font-size: 11px;
+            color: var(--green-dark);
+            margin-top: 2px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .top-menu-sold {
+            font-weight: 600;
+        }
+
         /* GRID MENU */
         .menu-grid {
             display: grid;
@@ -253,11 +368,28 @@
             display: flex;
             flex-direction: column;
             transition: transform 0.16s ease, box-shadow 0.16s ease, border-color 0.16s ease;
+            position: relative;
         }
         .menu-card:hover {
             transform: translateY(-4px);
             border-color: rgba(22, 163, 74, 0.35);
             box-shadow: 0 18px 40px rgba(15, 23, 42, 0.15);
+        }
+        .menu-badge-top-seller {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+            color: #fff;
+            font-size: 10px;
+            font-weight: 700;
+            padding: 4px 8px;
+            border-radius: 999px;
+            box-shadow: 0 4px 12px rgba(251, 191, 36, 0.5);
+            display: flex;
+            align-items: center;
+            gap: 3px;
+            z-index: 10;
         }
         .menu-img-wrap {
             width: 100%;
@@ -345,19 +477,6 @@
         .btn-detail:hover {
             text-decoration: underline;
         }
-        .btn-cart {
-            padding: 6px 12px;
-            border-radius: 999px;
-            border: none;
-            background: linear-gradient(90deg, var(--green) 0%, var(--green-dark) 100%);
-            color: #fff;
-            font-size: 11px;
-            font-weight: 600;
-            cursor: pointer;
-        }
-        .btn-cart:hover {
-            filter: brightness(1.05);
-        }
 
         .empty-box {
             text-align: center;
@@ -371,23 +490,91 @@
             margin-top: 18px;
         }
 
-        /* TENTANG */
-        .about-box {
+        /* TENTANG - NATURAL VERSION */
+        .about-wrap {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .about-main {
             background-color: var(--bg-card);
             border-radius: 16px;
             border: 1px solid var(--border-soft);
-            padding: 18px 16px;
+            padding: 24px;
+            box-shadow: var(--shadow-soft);
+            margin-bottom: 20px;
+        }
+        .about-main h3 {
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: var(--text-main);
+        }
+        .about-main p {
             font-size: 13px;
             color: var(--text-muted);
-            max-width: 800px;
-            margin: 0 auto;
+            line-height: 1.7;
+            margin-bottom: 10px;
+        }
+        .about-main p:last-child {
+            margin-bottom: 0;
+        }
+        .highlight-box {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            border-left: 4px solid var(--green);
+            padding: 14px 16px;
+            border-radius: 10px;
+            margin: 16px 0;
+        }
+        .highlight-box strong {
+            color: var(--green-dark);
+            font-size: 14px;
+        }
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 16px;
+            margin-top: 20px;
+        }
+        .info-card {
+            background-color: var(--bg-card);
+            border-radius: 14px;
+            border: 1px solid var(--border-soft);
+            padding: 18px;
             box-shadow: var(--shadow-soft);
         }
-        .about-box h3 {
-            font-size: 15px;
+        .info-card h4 {
+            font-size: 14px;
             font-weight: 600;
-            margin-bottom: 6px;
+            margin-bottom: 10px;
             color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .info-card p {
+            font-size: 12px;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 6px;
+        }
+        .info-card ul {
+            list-style: none;
+            padding: 0;
+            margin: 8px 0 0 0;
+        }
+        .info-card li {
+            font-size: 12px;
+            color: var(--text-muted);
+            padding: 5px 0;
+            padding-left: 18px;
+            position: relative;
+        }
+        .info-card li::before {
+            content: "•";
+            position: absolute;
+            left: 6px;
+            color: var(--green);
+            font-weight: bold;
         }
 
         /* FORM GENERIC */
@@ -503,19 +690,19 @@
     <section id="hero" class="hero-wrap">
         <div class="container hero">
             <div>
-                <div class="hero-label">KATALOG MENU</div>
-                <h1 class="hero-title">Bakso Hangat, <br>Siap Antar Ke Meja Anda</h1>
+                <div class="hero-label">WARUNG BAKSO</div>
+                <h1 class="hero-title">Rasanya Pas, Harganya Bersahabat</h1>
                 <p class="hero-desc">
-                    Pesan bakso favoritmu dari Warung Bakso Pak Timan. Kuah kaldu sapi gurih, bakso daging padat,
-                    dan pilihan mie atau bihun untuk semua selera.
+                    Dari tahun 1995, Pak Timan udah melayani ribuan pelanggan yang cari bakso enak di Tembalang. 
+                    Kuah kaldu sapi yang direbus berjam-jam, bakso daging asli tanpa campuran, dan mie kuning yang lembut.
                 </p>
 
                 <div class="hero-badges">
                     <div class="hero-badge">
-                        <strong>{{ $menus->total() }}</strong> menu terdaftar
+                        <strong>{{ $menus->total() }}</strong> menu tersedia
                     </div>
                     <div class="hero-badge">
-                        Buka setiap hari • 13.00 – 20.00
+                        Buka 13.00 – 20.00 • Tutup Selasa
                     </div>
                 </div>
             </div>
@@ -523,11 +710,11 @@
             <div class="hero-image-box">
                 <div class="hero-image-circle">
                     <div class="hero-image-content">
-                        <img src="{{ asset('storage/gambar/warung bakso pak timan.png') }}" alt="Bakso & Mie Ayam Pak Timan">
+                        <img src="{{ asset('storage/gambar/warung bakso pak timan.png') }}" alt="Warung Bakso Pak Timan">
                     </div>
                 </div>
                 <div class="hero-tag">
-                    Bakso & Mie Ayam Favorit
+                    Langganan Sejak 1995
                 </div>
             </div>
         </div>
@@ -536,18 +723,57 @@
     {{-- KATALOG --}}
     <section id="katalog" class="section">
         <div class="container">
+            {{-- TOP MENU --}}
+            @if(isset($topMenus) && $topMenus->count() > 0)
+            <div class="top-menu-section">
+                <div class="top-menu-header">
+                    <h3 class="top-menu-title">
+                        <span class="top-menu-badge">🔥</span>
+                        Paling Laris Minggu Ini
+                    </h3>
+                    <span class="top-menu-period">7 Hari Terakhir</span>
+                </div>
+                
+                <div class="top-menu-grid">
+                    @foreach($topMenus as $index => $topMenu)
+                    <a href="{{ route('katalog.show', ['id' => $topMenu->id]) }}" class="top-menu-card">
+                        <div class="top-menu-rank">{{ $index + 1 }}</div>
+                        
+                        @if($topMenu->foto)
+                            <img src="{{ asset('storage/'.$topMenu->foto) }}" 
+                                 alt="{{ $topMenu->nama_menu }}" 
+                                 class="top-menu-img">
+                        @else
+                            <div class="top-menu-img-empty">🍜</div>
+                        @endif
+                        
+                        <div class="top-menu-info">
+                            <div class="top-menu-name">{{ $topMenu->nama_menu }}</div>
+                            <div class="top-menu-stats">
+                                <span class="top-menu-sold">{{ $topMenu->total_terjual }} porsi</span>
+                                <span>•</span>
+                                <span>Rp {{ number_format($topMenu->harga, 0, ',', '.') }}</span>
+                            </div>
+                        </div>
+                    </a>
+                    @endforeach
+                </div>
+            </div>
+            @endif
+
+            {{-- KATALOG MENU --}}
             <div class="section-header">
-                <h2 class="section-title">Katalog Menu Bakso</h2>
+                <h2 class="section-title">Menu Bakso & Mie</h2>
                 <p class="section-sub">
-                    Pilih bakso, mie, dan minuman favoritmu. Klik “Lihat Detail” untuk informasi lebih lengkap.
+                    Pilih menu favorit kamu, dari bakso urat sampe mie ayam. Semuanya pake bahan segar setiap hari.
                 </p>
             </div>
 
             @if ($menus->count() === 0)
                 <div class="empty-box">
-                    <p><strong>Belum ada menu.</strong></p>
+                    <p><strong>Belum ada menu saat ini.</strong></p>
                     <p style="margin-top:4px;font-size:13px;color:var(--text-muted);">
-                        Silakan tambah menu di halaman admin, lalu buka kembali katalog ini.
+                        Hubungi admin untuk update menu terbaru.
                     </p>
                 </div>
             @else
@@ -555,9 +781,16 @@
                     @foreach ($menus as $menu)
                         @php
                             $isAvailable = $menu->status === 'tersedia';
+                            $isTopSeller = isset($topMenuIds) && in_array($menu->id, $topMenuIds);
                         @endphp
 
                         <div class="menu-card">
+                            @if($isTopSeller)
+                            <div class="menu-badge-top-seller">
+                                ⭐ Laris
+                            </div>
+                            @endif
+
                             <div class="menu-img-wrap">
                                 @if ($menu->foto)
                                     <img src="{{ asset('storage/'.$menu->foto) }}" alt="{{ $menu->nama_menu }}">
@@ -570,10 +803,10 @@
                             </div>
                             <div class="menu-body">
                                 <div class="menu-badge-top">
-                                    {{ $isAvailable ? 'Rekomendasi' : 'Sementara Habis' }}
+                                    {{ $isAvailable ? 'Tersedia' : 'Sold Out' }}
                                 </div>
                                 <div class="menu-name">{{ $menu->nama_menu }}</div>
-                                <div class="menu-cat">{{ strtoupper($menu->kategori ?: 'Umum') }}</div>
+                                <div class="menu-cat">{{ strtoupper($menu->kategori ?: 'Menu') }}</div>
 
                                 <div class="menu-price">
                                     Rp {{ number_format($menu->harga, 0, ',', '.') }}
@@ -587,7 +820,7 @@
 
                                 <div class="menu-status">
                                     <span class="status-pill {{ $isAvailable ? 'status-tersedia' : 'status-habis' }}">
-                                        {{ $isAvailable ? 'Tersedia' : 'Habis' }}
+                                        {{ $isAvailable ? 'Ready' : 'Habis' }}
                                     </span>
                                 </div>
 
@@ -595,9 +828,6 @@
                                     <a href="{{ route('katalog.show', ['id' => $menu->id]) }}" class="btn-detail">
                                         Lihat Detail »
                                     </a>
-                                    <button type="button" class="btn-cart">
-                                        Add To Cart
-                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -615,53 +845,106 @@
     <section id="tentang" class="section">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Tentang Bakso Pak Timan</h2>
+                <h2 class="section-title">Kenal Warung Kami</h2>
                 <p class="section-sub">
-                    Kolom ini dapat diisi dengan alamat lengkap, sejarah warung, visi misi, dan informasi penting lainnya.
+                    Bakso keluarga yang udah jadi langganan warga Tembalang sejak puluhan tahun lalu
                 </p>
             </div>
 
-            <div class="about-box">
-                <h3>Profil Singkat Warung</h3>
-                <p>Bakso Pak Timan berdiri sejak tahun .... Tuliskan sejarah singkat warung di sini.</p>
-                <p>Alamat: Jl. Contoh Alamat No. 123, Kota Contoh.</p>
-                <p>Visi, misi, dan nilai-nilai pelayanan dapat kamu ubah sesuai kebutuhan.</p>
+            <div class="about-wrap">
+                <div class="about-main">
+                    <h3>Cerita Warung Bakso Pak Timan</h3>
+                    <p>
+                        Warung ini mulai dari gerobak kecil di pinggir jalan tahun 1995. Pak Timan waktu itu baru pindah 
+                        ke Semarang, modal nekat sama resep bakso warisan dari almarhum bapaknya. Yang bikin beda, 
+                        kuah kaldunya direbus minimal 8 jam pake tulang sapi asli. Baksonya juga gak pake tepung berlebihan.
+                    </p>
+                    <p>
+                        Sekarang warung udah punya tempat tetap di Kedungmundu. Pelanggan ada yang langganan dari zaman 
+                        masih kuliah sampai sekarang udah kerja. Ada juga yang dari kecil dibawa orang tua makan di sini, 
+                        sekarang bawa anak sendiri. Itulah yang bikin kami tetap bertahan - rasa yang konsisten dan 
+                        nggak ngejar untung sesaat.
+                    </p>
+
+                    <div class="highlight-box">
+                        <strong>30 tahun lebih</strong> melayani dengan resep yang sama. Gak pake MSG berlebihan, 
+                        gak ganti bahan murah. Yang penting pelanggan puas dan balik lagi.
+                    </div>
+                </div>
+
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h4>📍 Lokasi Warung</h4>
+                        <p><strong>Jl. Kedungmundu, Sendangguwo</strong><br>
+                        Kec. Tembalang, Semarang<br>
+                        Jawa Tengah 50273</p>
+                        <p style="margin-top:8px;"><strong>Jam Buka:</strong><br>
+                        Senin, Rabu-Minggu: 13.00 - 20.00<br>
+                        <span style="color:#dc2626;font-size:11px;">Tutup setiap hari Selasa</span></p>
+                    </div>
+
+                    <div class="info-card">
+                        <h4>📞 Hubungi Kami</h4>
+                        <p><strong>WhatsApp:</strong><br>+62 895-3699-82121</p>
+                        <p style="margin-top:6px;">Bisa order untuk acara keluarga, arisan, atau kantor. 
+                        Minimal 50 porsi ya, nanti kita kasih harga spesial.</p>
+                    </div>
+
+                    <div class="info-card">
+                        <h4>✨ Kenapa Langganan?</h4>
+                        <ul>
+                            <li>Daging sapi segar setiap hari</li>
+                            <li>Kuah direbus 8+ jam, bukan dari kaldu instan</li>
+                            <li>Porsi pas, harga gak kemahalan</li>
+                            <li>Tempatnya bersih dan nyaman</li>
+                            <li>Pelayanan ramah kayak keluarga sendiri</li>
+                        </ul>
+                    </div>
+
+                    {{-- <div class="info-card">
+                        <h4>💬 Kata Pelanggan</h4>
+                        <p style="font-style:italic;margin-bottom:8px;">
+                            "Dari SMP sampe sekarang kerja masih suka makan di sini. Rasanya gak berubah, 
+                            kuahnya tetep gurih alami."
+                        </p>
+                        <p style="font-size:11px;color:#6b7280;">— Mas Andi, pelanggan sejak 2008</p>
+                    </div> --}}
+                </div>
             </div>
         </div>
     </section>
 
-    {{-- KONTAK & FORM BANYAK PORSI + KOMENTAR --}}
+    {{-- KONTAK & FORM --}}
     <section id="kontak" class="section">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Kontak & Formulir</h2>
+                <h2 class="section-title">Pesan untuk Acara</h2>
                 <p class="section-sub">
-                    Gunakan formulir pemesanan untuk pesanan dalam jumlah besar, dan formulir komentar untuk memberikan masukan
-                    tentang produk maupun pelayanan.
+                    Butuh bakso buat acara kantor atau keluarga? Isi form ini, nanti kita hubungi via WhatsApp
                 </p>
             </div>
 
-            {{-- FORM PESAN BANYAK PORSI --}}
+            {{-- FORM PESAN BANYAK --}}
             <div class="form-card" style="background-color: var(--green-soft2); border-color: #bbf7d0;">
-                <h3>Form Pemesanan &gt; 50 Porsi</h3>
-                <small>Isi formulir ini untuk permintaan pesanan dalam jumlah besar (acara kantor, hajatan, arisan, dan lain‑lain).</small>
+                <h3>Pesan Lebih dari 50 Porsi</h3>
+                <small>Untuk acara hajatan, arisan, meeting kantor, dan sebagainya</small>
 
                 <form id="form-pemesanan" action="#" method="post" style="margin-top:6px;">
                     @csrf
                     <div class="form-row form-row-inline">
                         <div>
-                            <label for="banyak-nama">Nama PIC</label>
-                            <input type="text" id="banyak-nama" name="nama" placeholder="Nama penanggung jawab" required>
+                            <label for="banyak-nama">Nama Pemesan</label>
+                            <input type="text" id="banyak-nama" name="nama" placeholder="Nama lengkap" required>
                         </div>
                         <div>
-                            <label for="banyak-telepon">No. HP / WhatsApp</label>
-                            <input type="text" id="banyak-telepon" name="telepon" placeholder="08xx‑xxxx‑xxxx" required>
+                            <label for="banyak-telepon">No. WhatsApp</label>
+                            <input type="text" id="banyak-telepon" name="telepon" placeholder="08xxxxxxxxxx" required>
                         </div>
                     </div>
 
                     <div class="form-row form-row-inline">
                         <div>
-                            <label for="banyak-jumlah">Jumlah Porsi (min. 50)</label>
+                            <label for="banyak-jumlah">Jumlah Porsi</label>
                             <input type="number" id="banyak-jumlah" name="jumlah" min="50" value="50" required>
                         </div>
                         <div>
@@ -671,56 +954,55 @@
                     </div>
 
                     <div class="form-row">
-                        <label for="banyak-lokasi">Lokasi Pengantaran</label>
-                        <input type="text" id="banyak-lokasi" name="lokasi" placeholder="Alamat lengkap acara" required>
+                        <label for="banyak-lokasi">Alamat Pengiriman</label>
+                        <input type="text" id="banyak-lokasi" name="lokasi" placeholder="Tulis alamat lengkap" required>
                     </div>
 
                     <div class="form-row">
-                        <label for="banyak-catatan">Catatan Menu & Kebutuhan Khusus</label>
-                        <textarea id="banyak-catatan" name="catatan" placeholder="Contoh: 70 porsi bakso komplit, 30 porsi bakso biasa, kuah terpisah, dll"></textarea>
+                        <label for="banyak-catatan">Catatan Tambahan</label>
+                        <textarea id="banyak-catatan" name="catatan" placeholder="Misal: bakso urat 30 porsi, bakso biasa 20 porsi, dll"></textarea>
                     </div>
 
                     <p class="form-note">
-                        Setelah formulir terkirim, tim Bakso Pak Timan akan menghubungi Anda melalui WhatsApp
-                        untuk konfirmasi harga, pembayaran, dan waktu pengantaran.
+                        Setelah kirim, kami bakal hubungi lewat WhatsApp buat konfirmasi harga dan detail pengiriman.
                     </p>
 
                     <button type="submit" class="btn-submit">
-                        Kirim Permintaan Pesanan via WhatsApp
+                        Kirim Pesanan ke WhatsApp
                     </button>
                 </form>
             </div>
 
             {{-- FORM KOMENTAR --}}
             <div class="form-card">
-                <h3>Form Komentar Pengunjung</h3>
-                <small>Isi formulir berikut setelah berkunjung atau memesan bakso.</small>
+                <h3>Kasih Saran atau Kritik</h3>
+                <small>Udah pernah makan di sini? Kasih tau pendapat kamu biar kami bisa lebih baik lagi</small>
 
                 <form id="form-komentar" action="#" method="post" style="margin-top:6px;">
                     @csrf
                     <div class="form-row">
-                        <label for="komentar-nama">Nama Lengkap</label>
-                        <input type="text" id="komentar-nama" name="nama" placeholder="Nama Anda" required>
+                        <label for="komentar-nama">Nama</label>
+                        <input type="text" id="komentar-nama" name="nama" placeholder="Nama kamu" required>
                     </div>
 
                     <div class="form-row form-row-inline">
                         <div>
-                            <label for="komentar-tanggal">Berkunjung Kapan</label>
+                            <label for="komentar-tanggal">Kapan Makan di Sini?</label>
                             <input type="date" id="komentar-tanggal" name="tanggal_kunjungan" required>
                         </div>
                         <div>
-                            <label for="komentar-menu">Nama Pesanan yang Dipesan</label>
-                            <input type="text" id="komentar-menu" name="nama_pesanan" placeholder="Contoh: Bakso Komplit Spesial" required>
+                            <label for="komentar-menu">Menu yang Dipesan</label>
+                            <input type="text" id="komentar-menu" name="nama_pesanan" placeholder="Misal: Bakso Komplit" required>
                         </div>
                     </div>
 
                     <div class="form-row">
-                        <label for="komentar-isi">Komentar / Saran</label>
-                        <textarea id="komentar-isi" name="komentar" placeholder="Tuliskan komentar atau saran untuk rasa, porsi, harga, atau pelayanan kami" required></textarea>
+                        <label for="komentar-isi">Saran / Kritik</label>
+                        <textarea id="komentar-isi" name="komentar" placeholder="Tulis pendapat kamu tentang rasa, porsi, harga, atau pelayanan" required></textarea>
                     </div>
 
                     <button type="submit" class="btn-submit">
-                        Kirim Komentar via WhatsApp
+                        Kirim via WhatsApp
                     </button>
                 </form>
             </div>
@@ -728,7 +1010,7 @@
     </section>
 
     <footer class="footer">
-        © {{ date('Y') }} Bakso Pak Timan. Semua hak dilindungi.
+        © {{ date('Y') }} Warung Bakso Pak Timan • Tembalang, Semarang
     </footer>
 
     {{-- SCRIPT WHATSAPP --}}
@@ -746,16 +1028,14 @@
             const lokasi  = document.getElementById('banyak-lokasi').value;
             const catatan = document.getElementById('banyak-catatan').value || '-';
 
-            let pesan  = 'Permintaan Pesanan > 50 Porsi\n';
-            pesan     += '============================\n';
-            pesan     += 'Nama PIC      : ' + nama + '\n';
-            pesan     += 'No. HP/WA     : ' + telp + '\n';
-            pesan     += 'Jumlah Porsi  : ' + jumlah + '\n';
-            pesan     += 'Tanggal Acara : ' + tanggal + '\n';
-            pesan     += 'Lokasi        : ' + lokasi + '\n';
-            pesan     += 'Catatan       : ' + catatan + '\n';
-            pesan     += '============================\n';
-            pesan     += 'Dikirim dari halaman katalog Bakso Pak Timan.';
+            let pesan  = 'Halo Pak Timan, saya mau pesan bakso:\n\n';
+            pesan     += 'Nama: ' + nama + '\n';
+            pesan     += 'HP/WA: ' + telp + '\n';
+            pesan     += 'Jumlah: ' + jumlah + ' porsi\n';
+            pesan     += 'Tanggal: ' + tanggal + '\n';
+            pesan     += 'Alamat: ' + lokasi + '\n';
+            pesan     += 'Catatan: ' + catatan + '\n\n';
+            pesan     += 'Mohon info harga dan ketersediaannya ya. Terima kasih!';
 
             const encoded = encodeURIComponent(pesan);
             const url = 'https://wa.me/' + WA_NUMBER + '?text=' + encoded;
@@ -771,14 +1051,11 @@
             const menu = document.getElementById('komentar-menu').value;
             const isi  = document.getElementById('komentar-isi').value;
 
-            let pesan  = 'Komentar Pengunjung\n';
-            pesan     += '=====================\n';
-            pesan     += 'Nama          : ' + nama + '\n';
-            pesan     += 'Tanggal Kunj. : ' + tgl + '\n';
-            pesan     += 'Pesanan       : ' + menu + '\n';
-            pesan     += 'Komentar/Saran:\n' + isi + '\n';
-            pesan     += '=====================\n';
-            pesan     += 'Dikirim dari halaman katalog Bakso Pak Timan.';
+            let pesan  = 'Saran/Kritik dari Pelanggan:\n\n';
+            pesan     += 'Nama: ' + nama + '\n';
+            pesan     += 'Tanggal: ' + tgl + '\n';
+            pesan     += 'Menu: ' + menu + '\n\n';
+            pesan     += 'Komentar:\n' + isi;
 
             const encoded = encodeURIComponent(pesan);
             const url = 'https://wa.me/' + WA_NUMBER + '?text=' + encoded;
